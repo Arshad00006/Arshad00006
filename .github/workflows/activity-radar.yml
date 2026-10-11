@@ -1,0 +1,36 @@
+name: Update Activity Radar
+
+on:
+  schedule:
+    - cron: "0 */12 * * *"   # every 12 hours
+  workflow_dispatch:          # manual run from the Actions tab
+  push:
+    branches:
+      - main
+    paths:
+      - "scripts/generate_radar.py"
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate radar SVG
+        env:
+          # Uses your personal token if you add one (counts private contributions),
+          # otherwise falls back to the built-in token (public contributions only).
+          GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
+          USERNAME: ${{ github.repository_owner }}
+        run: python3 scripts/generate_radar.py
+
+      - name: Commit if changed
+        run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add assets/activity-radar.svg
+          git commit -m "chore: refresh activity radar" || exit 0
+          git push
