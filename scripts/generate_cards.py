@@ -2,6 +2,7 @@
 """
 Generates three self-hosted profile cards from your real GitHub data:
 
+    assets/badges.svg            followers / repos / stars / contributions pill row
     assets/trophies.svg          achievement trophies with Bronze → Diamond tiers
     assets/activity-graph.svg    smooth 31-day contribution line chart
     assets/projects/<repo>.svg   one card per pinned repo (falls back to recent repos)
@@ -325,6 +326,56 @@ def build_activity(d):
 """
 
 
+# ───────────────────────────── badge row ─────────────────────────────
+STATUS = "Open to internships"   # set to "" to hide the green status pill
+
+
+def build_badges(d):
+    W, H, PH, PY, GAP = 880, 44, 34, 5, 10
+    total = sum(v for _, v in d["days"])
+    items = [
+        ("Followers", f'{d["followers"]:,}', ic_user),
+        ("Repositories", f'{d["repos"]:,}', ic_repo),
+        ("Stars", f'{d["stars"]:,}', ic_star),
+        ("Contributions", f"{total:,}", ic_commit),
+    ]
+
+    def width(label, value):
+        return int(16 + 18 + len(label) * 6.8 + 8 + len(value) * 8.2 + 16)
+
+    layout = [(width(l, v), l, v, ic) for l, v, ic in items]
+    status_w = int(16 + 18 + len(STATUS) * 7.2 + 16) if STATUS else 0
+    total_w = sum(w for w, *_ in layout) + GAP * (len(layout) - 1)
+    if STATUS:
+        total_w += GAP + status_w
+    x = (W - total_w) / 2
+
+    out = ""
+    for w, label, value, ic in layout:
+        out += f"""
+  <g transform="translate({x:.1f},{PY})">
+    <rect width="{w}" height="{PH}" rx="17" fill="#161B22" stroke="#30363D"/>
+    <g transform="translate(14,{(PH-14.4)/2:.1f}) scale(0.6)">{ic('#58A6FF')}</g>
+    <text x="34" y="22" font-family="{FONT}" font-size="12" fill="#8B949E">{esc(label)}</text>
+    <text x="{34 + len(label) * 6.8 + 8:.1f}" y="22" font-family="{FONT}" font-size="13" font-weight="700" fill="#E6EDF3">{esc(value)}</text>
+  </g>"""
+        x += w + GAP
+
+    if STATUS:
+        out += f"""
+  <g transform="translate({x:.1f},{PY})">
+    <rect width="{status_w}" height="{PH}" rx="17" fill="#3FB950" fill-opacity="0.12" stroke="#3FB950" stroke-opacity="0.55"/>
+    <circle cx="20" cy="{PH/2}" r="4" fill="#3FB950">
+      <animate attributeName="opacity" values="1;0.25;1" dur="2s" repeatCount="indefinite"/>
+    </circle>
+    <text x="34" y="22" font-family="{FONT}" font-size="12" font-weight="700" fill="#3FB950">{esc(STATUS)}</text>
+  </g>"""
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Profile stats">{out}
+</svg>
+"""
+
+
 # ───────────────────────────── project cards ─────────────────────────────
 def project_card(r):
     W, H = 430, 140
@@ -418,6 +469,7 @@ def main():
 
     write(os.path.join(OUT_DIR, "trophies.svg"), build_trophies(data))
     write(os.path.join(OUT_DIR, "activity-graph.svg"), build_activity(data))
+    write(os.path.join(OUT_DIR, "badges.svg"), build_badges(data))
 
     pdir = os.path.join(OUT_DIR, "projects")
     keep = set()
