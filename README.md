@@ -17,9 +17,8 @@
 
 <br><br>
 
-<img src="https://komarev.com/ghpvc/?username=Arshad00006&label=Profile%20Views&color=58A6FF&style=for-the-badge&labelColor=0D1117" alt="Profile views"/>
-<a href="https://github.com/Arshad00006?tab=followers"><img src="https://img.shields.io/github/followers/Arshad00006?label=Followers&style=for-the-badge&color=58A6FF&labelColor=0D1117" alt="Followers"/></a>
-<a href="https://github.com/Arshad00006?tab=repositories"><img src="https://img.shields.io/badge/Open%20to-Internships-3FB950?style=for-the-badge&labelColor=0D1117" alt="Open to internships"/></a>
+<!-- Self-hosted: refreshed every 12h by scripts/generate_cards.py -->
+<img width="100%" src="./assets/badges.svg" alt="Followers, repositories, stars and contributions"/>
 
 </div>
 
