@@ -58,7 +58,7 @@ query($login: String!) {
     followers { totalCount }
     issues { totalCount }
     pullRequests { totalCount }
-    owned: repositories(first: 100, ownerAffiliation: OWNER, isFork: false) {
+    owned: repositories(first: 100, ownerAffiliations: OWNER, isFork: false) {
       totalCount
       nodes {
         stargazerCount
@@ -70,7 +70,7 @@ query($login: String!) {
     pinnedItems(first: 6, types: REPOSITORY) {
       nodes { ... on Repository { REPO_FIELDS } }
     }
-    recent: repositories(first: 8, ownerAffiliation: OWNER, isFork: false,
+    recent: repositories(first: 8, ownerAffiliations: OWNER, isFork: false,
                          orderBy: {field: PUSHED_AT, direction: DESC}) {
       nodes { REPO_FIELDS }
     }
@@ -324,7 +324,7 @@ def build_activity(d):
     empty = ""
     if total == 0:
         empty = (f'<text x="{(x0+x1)/2}" y="{(y0+y1)/2-10}" text-anchor="middle" font-family="{FONT}" '
-                 f'font-size="14" fill="#8B949E">No contributions in the last 31 days — your first commit starts the line.</text>')
+                 f'font-size="14" fill="#8B949E">No contributions in the last 31 days. Your first commit starts the line.</text>')
 
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Contribution activity, last 31 days">
   <defs>
@@ -439,7 +439,7 @@ def build_languages(d):
 """
     if not langs:
         return head + (f'  <text x="{W/2}" y="130" text-anchor="middle" font-family="{FONT}" font-size="13" fill="#8B949E">'
-                       f'No code detected yet — push a repository and this fills in.</text>\n</svg>\n')
+                       f'No code detected yet. Push a repository and this fills in.</text>\n</svg>\n')
 
     bar, x = "", 28.0
     for name, color, size in top:
@@ -488,10 +488,10 @@ def build_streak(d):
 
     def fmt(a, b=None):
         if not a:
-            return "—"
+            return "No streak yet"
         t = f"{a:%b} {a.day}" + (f", {a.year}" if a.year != dt.date.today().year else "")
         if b and b != a:
-            t += f" – {b:%b} {b.day}"
+            t += f" to {b:%b} {b.day}"
         return t
 
     cx, cy, r = 440, 66, 42
@@ -511,7 +511,7 @@ def build_streak(d):
 
   {num(147, f"{total:,}")}
   {lab(147, 116, "Total Contributions", "#C9D1D9", 13)}
-  {lab(147, 138, f"{fmt(first)} – Present", "#6E7681", 11)}
+  {lab(147, 138, f"{fmt(first)} to today", "#6E7681", 11)}
 
   <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#21262D" stroke-width="7"/>
   <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round"
