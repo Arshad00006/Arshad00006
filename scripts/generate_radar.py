@@ -9,6 +9,7 @@ Usage:
 
 No third-party packages required (standard library only).
 """
+import datetime as dt
 import json
 import os
 import sys
@@ -66,7 +67,7 @@ def pct_label(p):
     return f"{round(p)}%"
 
 
-def build(login, d):
+def build(login, d, demo=False):
     W, H = 880, 340
     cx, cy, R = 650, 178, 104
 
@@ -101,6 +102,14 @@ def build(login, d):
         )
 
     font = "'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif"
+
+    now = dt.datetime.now(dt.timezone.utc)
+    if demo:
+        stamp = (f'<text x="32" y="{H-18}" font-family="{font}" font-size="11" font-weight="700" '
+                 f'fill="#F78166">SAMPLE DATA · run the workflow to load yours</text>')
+    else:
+        stamp = (f'<text x="32" y="{H-18}" font-family="{font}" font-size="11" fill="#6E7681">'
+                 f'Updated {now:%b} {now.day}, {now.year} · auto-refreshes every 15 min</text>')
 
     def axis_label(x, y, anchor, key, name):
         return (
@@ -174,6 +183,7 @@ def build(login, d):
   </g>
 
   {labels}
+  {stamp}
 </svg>
 """
 
@@ -190,7 +200,7 @@ def main():
 
     os.makedirs(os.path.dirname(OUT) or ".", exist_ok=True)
     with open(OUT, "w", encoding="utf-8") as f:
-        f.write(build(login, data))
+        f.write(build(login, data, demo="--demo" in sys.argv))
     print(f"wrote {OUT}  ->  {data}")
 
 

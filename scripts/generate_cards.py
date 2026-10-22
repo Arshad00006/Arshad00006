@@ -4,6 +4,9 @@ Generates three self-hosted profile cards from your real GitHub data:
 
     assets/badges.svg            followers / repos / stars / contributions pill row
     assets/trophies.svg          achievement trophies with Bronze → Diamond tiers
+    assets/stats.svg             stats card with rank ring
+    assets/languages.svg         top languages across your own repos
+    assets/streak.svg            total / current / longest contribution streak
     assets/activity-graph.svg    smooth 31-day contribution line chart
     assets/projects/<repo>.svg   one card per pinned repo (falls back to recent repos)
 
@@ -30,6 +33,18 @@ from html import escape
 OUT_DIR = os.environ.get("OUT_DIR", "assets")
 README = os.environ.get("README_PATH", "README.md")
 FONT = "'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif"
+DEMO = False   # set in main(); sample data gets an orange warning label
+LOGIN = "you"  # set in main()
+
+
+def stamp(x, y, anchor="end"):
+    """Small footer label: warns on sample data, otherwise shows the refresh date."""
+    if DEMO:
+        return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-family="{FONT}" font-size="11" '
+                f'font-weight="700" fill="#F78166">SAMPLE DATA · run the workflow to load yours</text>')
+    now = dt.datetime.now(dt.timezone.utc)
+    return (f'<text x="{x}" y="{y}" text-anchor="{anchor}" font-family="{FONT}" font-size="11" '
+            f'fill="#6E7681">Updated {now:%b} {now.day}, {now.year} · auto-refreshes every 15 min</text>')
 
 REPO_FIELDS = """
   name url description stargazerCount forkCount
@@ -45,7 +60,12 @@ query($login: String!) {
     pullRequests { totalCount }
     owned: repositories(first: 100, ownerAffiliation: OWNER, isFork: false) {
       totalCount
-      nodes { stargazerCount }
+      nodes {
+        stargazerCount
+        languages(first: 8, orderBy: {field: SIZE, direction: DESC}) {
+          edges { size node { name color } }
+        }
+      }
     }
     pinnedItems(first: 6, types: REPOSITORY) {
       nodes { ... on Repository { REPO_FIELDS } }
@@ -56,6 +76,7 @@ query($login: String!) {
     }
     contributionsCollection {
       totalCommitContributions
+      totalPullRequestReviewContributions
       contributionCalendar {
         totalContributions
         weeks { contributionDays { date contributionCount } }
@@ -100,7 +121,17 @@ def fetch(login, token):
         if n and n.get("name") and n["name"].lower() != login.lower()
     ][:6]
 
+    langs = {}
+    for n in u["owned"]["nodes"]:
+        for e in ((n.get("languages") or {}).get("edges") or []):
+            nm = e["node"]["name"]
+            langs.setdefault(nm, [0, e["node"].get("color") or "#8B949E"])
+            langs[nm][0] += e["size"]
+    lang_list = sorted(((k, v[1], v[0]) for k, v in langs.items()), key=lambda x: -x[2])
+
     return {
+        "reviews": u["contributionsCollection"]["totalPullRequestReviewContributions"],
+        "langs": lang_list,
         "stars": sum(n["stargazerCount"] for n in u["owned"]["nodes"]),
         "commits": u["contributionsCollection"]["totalCommitContributions"],
         "followers": u["followers"]["totalCount"],
@@ -121,6 +152,9 @@ def demo_data():
         d = today - dt.timedelta(days=364 - i)
         days.append((d.isoformat(), random.choice([0, 0, 0, 1, 2, 3, 4, 6, 9])))
     return {
+        "reviews": 6,
+        "langs": [("C++", "#f34b7d", 52000), ("Python", "#3572A5", 31000), ("JavaScript", "#f1e05a", 14000),
+                  ("HTML", "#e34c26", 9000), ("CSS", "#563d7c", 5000), ("C", "#555555", 3000)],
         "stars": 14, "commits": 312, "followers": 23, "prs": 9, "issues": 4,
         "repos": 18, "years": 2, "days": days,
         "projects": [
@@ -187,7 +221,7 @@ LOCKED = "#484F58"
 
 def build_trophies(d):
     CW, CH, GAP, MX, TOP = 112, 172, 10, 18, 4
-    W, H = 880, CH + TOP * 2
+    W, H = 880, CH + TOP * 2 + 22
     cards = ""
     for i, (title, key, th, icon) in enumerate(TROPHIES):
         v = d[key]
@@ -219,6 +253,7 @@ def build_trophies(d):
     <text x="{cx}" y="160" text-anchor="middle" font-family="{FONT}" font-size="10" font-weight="700" fill="{color}">{name.upper()}</text>
   </g>"""
     return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="GitHub trophies">{cards}
+  {stamp(W-18, H-6)}
 </svg>
 """
 
@@ -310,6 +345,8 @@ def build_activity(d):
   <rect x="32" y="56" width="46" height="3" rx="1.5" fill="url(#accent)"/>
   <text x="32" y="84" font-family="{FONT}" font-size="12" fill="#8B949E">Last 31 days · {total:,} contributions · {active} active days</text>
 
+  {stamp(W-32, 46)}
+
   {grid}
   <path d="{area}" fill="url(#areaFill)">
     <animate attributeName="opacity" from="0" to="1" dur="1.4s" fill="freeze"/>
@@ -322,6 +359,172 @@ def build_activity(d):
   {peak_note}
   {xlabels}
   {empty}
+</svg>
+"""
+
+
+# ───────────────────────────── stats / languages / streak ─────────────────────────────
+def ic_eye(c):
+    return (f'<path d="M2 12s4-7 10-7 10 7 10 7-4 7-10 7S2 12 2 12z" fill="none" stroke="{c}" stroke-width="2" stroke-linejoin="round"/>'
+            f'<circle cx="12" cy="12" r="3" fill="none" stroke="{c}" stroke-width="2"/>')
+
+
+GRADES = [(3000, "S"), (1500, "A+"), (800, "A"), (400, "B+"), (200, "B"), (80, "C+"), (0, "C")]
+
+
+def build_stats(d):
+    W, H = 430, 220
+    pts = (d["commits"] + d["prs"] * 8 + d["issues"] * 4 + d["reviews"] * 3
+           + d["stars"] * 10 + d["followers"] * 5 + d["repos"] * 2)
+    gi = next(i for i, (t, _) in enumerate(GRADES) if pts >= t)
+    thr, grade = GRADES[gi]
+    frac = 1.0 if gi == 0 else (pts - thr) / (GRADES[gi - 1][0] - thr)
+    cx, cy, r = 352, 118, 42
+    C = 2 * math.pi * r
+
+    rows = [
+        ("Total Stars", d["stars"], ic_star),
+        ("Commits (12 mo)", d["commits"], ic_commit),
+        ("Pull Requests", d["prs"], ic_pr),
+        ("Issues", d["issues"], ic_issue),
+        ("Code Reviews", d["reviews"], ic_eye),
+        ("Repositories", d["repos"], ic_repo),
+    ]
+    row_svg = ""
+    for i, (label, val, ic) in enumerate(rows):
+        y = 94 + i * 22
+        row_svg += (f'<g transform="translate(28,{y-12}) scale(0.62)">{ic("#58A6FF")}</g>'
+                    f'<text x="54" y="{y}" font-family="{FONT}" font-size="13" fill="#C9D1D9">{esc(label)}</text>'
+                    f'<text x="262" y="{y}" text-anchor="end" font-family="{FONT}" font-size="13" font-weight="700" fill="#E6EDF3">{val:,}</text>')
+
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="GitHub stats">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#58A6FF"/><stop offset="1" stop-color="#BC8CFF"/></linearGradient>
+  </defs>
+  <rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="20" fill="#0D1117" stroke="#21262D"/>
+  <text x="28" y="42" font-family="{FONT}" font-size="17" font-weight="700" fill="#E6EDF3">GitHub Stats</text>
+  <rect x="28" y="52" width="46" height="3" rx="1.5" fill="url(#g)"/>
+  <text x="28" y="74" font-family="{FONT}" font-size="11" fill="#6E7681">@{esc(LOGIN)}</text>
+  {row_svg}
+  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#21262D" stroke-width="8"/>
+  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="url(#g)" stroke-width="8" stroke-linecap="round"
+          stroke-dasharray="{C*frac:.1f} {C:.1f}" transform="rotate(-90 {cx} {cy})">
+    <animate attributeName="stroke-dasharray" from="0 {C:.1f}" to="{C*frac:.1f} {C:.1f}" dur="1.2s" fill="freeze"/>
+  </circle>
+  <text x="{cx}" y="{cy+11}" text-anchor="middle" font-family="{FONT}" font-size="30" font-weight="800" fill="#E6EDF3">{grade}</text>
+  <text x="{cx}" y="{cy+r+22}" text-anchor="middle" font-family="{FONT}" font-size="11" fill="#6E7681">{pts:,} pts</text>
+</svg>
+"""
+
+
+def build_languages(d):
+    W, H = 430, 220
+    langs = d["langs"]
+    total = sum(sz for _, _, sz in langs) or 1
+    top = langs[:6]
+    rest = sum(sz for _, _, sz in langs[6:])
+    if rest:
+        top = top + [("Other", "#6E7681", rest)]
+
+    head = f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Top languages">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#58A6FF"/><stop offset="1" stop-color="#BC8CFF"/></linearGradient>
+    <clipPath id="barclip"><rect x="28" y="72" width="374" height="12" rx="6">
+      <animate attributeName="width" from="0" to="374" dur="1.1s" fill="freeze"/>
+    </rect></clipPath>
+  </defs>
+  <rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="20" fill="#0D1117" stroke="#21262D"/>
+  <text x="28" y="42" font-family="{FONT}" font-size="17" font-weight="700" fill="#E6EDF3">Top Languages</text>
+  <rect x="28" y="52" width="46" height="3" rx="1.5" fill="url(#g)"/>
+"""
+    if not langs:
+        return head + (f'  <text x="{W/2}" y="130" text-anchor="middle" font-family="{FONT}" font-size="13" fill="#8B949E">'
+                       f'No code detected yet — push a repository and this fills in.</text>\n</svg>\n')
+
+    bar, x = "", 28.0
+    for name, color, size in top:
+        w = max(3.0, 374 * size / total)
+        bar += f'<rect x="{x:.1f}" y="72" width="{w:.1f}" height="12" fill="{esc(color)}"/>'
+        x += w
+    legend = ""
+    for i, (name, color, size) in enumerate(top):
+        col, row = i % 2, i // 2
+        lx, ly = 28 + col * 196, 118 + row * 34
+        legend += (f'<circle cx="{lx+5}" cy="{ly-4}" r="5" fill="{esc(color)}"/>'
+                   f'<text x="{lx+18}" y="{ly}" font-family="{FONT}" font-size="13" font-weight="600" fill="#C9D1D9">{esc(name)}</text>'
+                   f'<text x="{lx+18}" y="{ly+15}" font-family="{FONT}" font-size="11" fill="#8B949E">{size/total*100:.1f}%</text>')
+    return head + f'  <g clip-path="url(#barclip)">{bar}</g>\n  {legend}\n</svg>\n'
+
+
+def streaks(days):
+    ds = [(dt.date.fromisoformat(a), c) for a, c in days]
+    best, run, start = (0, None, None), 0, None
+    for day, c in ds:
+        if c > 0:
+            if run == 0:
+                start = day
+            run += 1
+            if run > best[0]:
+                best = (run, start, day)
+        else:
+            run = 0
+    i = len(ds) - 1
+    if i >= 0 and ds[i][1] == 0:
+        i -= 1            # today not done yet — streak is still alive
+    cur, end = 0, None
+    while i >= 0 and ds[i][1] > 0:
+        end = end or ds[i][0]
+        cur += 1
+        i -= 1
+    cur_range = (ds[i + 1][0], end) if cur else (None, None)
+    return (cur, *cur_range), best
+
+
+def build_streak(d):
+    W, H = 880, 176
+    cur, best = streaks(d["days"])
+    total = sum(v for _, v in d["days"])
+    first = dt.date.fromisoformat(d["days"][0][0])
+
+    def fmt(a, b=None):
+        if not a:
+            return "—"
+        t = f"{a:%b} {a.day}" + (f", {a.year}" if a.year != dt.date.today().year else "")
+        if b and b != a:
+            t += f" – {b:%b} {b.day}"
+        return t
+
+    cx, cy, r = 440, 66, 42
+    C = 2 * math.pi * r
+    frac = min(1.0, cur[0] / best[0]) if best[0] else 0
+    num = lambda x, v: (f'<text x="{x}" y="86" text-anchor="middle" font-family="{FONT}" font-size="34" '
+                        f'font-weight="800" fill="#E6EDF3">{v}</text>')
+    lab = lambda x, y, t, c="#8B949E", sz=12: (f'<text x="{x}" y="{y}" text-anchor="middle" font-family="{FONT}" '
+                                               f'font-size="{sz}" fill="{c}">{esc(t)}</text>')
+    return f"""<svg xmlns="http://www.w3.org/2000/svg" width="{W}" height="{H}" viewBox="0 0 {W} {H}" role="img" aria-label="Contribution streak">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F78166"/><stop offset="1" stop-color="#BC8CFF"/></linearGradient>
+  </defs>
+  <rect x="0.5" y="0.5" width="{W-1}" height="{H-1}" rx="20" fill="#0D1117" stroke="#21262D"/>
+  <line x1="293" y1="28" x2="293" y2="{H-28}" stroke="#21262D"/>
+  <line x1="587" y1="28" x2="587" y2="{H-28}" stroke="#21262D"/>
+
+  {num(147, f"{total:,}")}
+  {lab(147, 116, "Total Contributions", "#C9D1D9", 13)}
+  {lab(147, 138, f"{fmt(first)} – Present", "#6E7681", 11)}
+
+  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="#21262D" stroke-width="7"/>
+  <circle cx="{cx}" cy="{cy}" r="{r}" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round"
+          stroke-dasharray="{C*frac:.1f} {C:.1f}" transform="rotate(-90 {cx} {cy})">
+    <animate attributeName="stroke-dasharray" from="0 {C:.1f}" to="{C*frac:.1f} {C:.1f}" dur="1.2s" fill="freeze"/>
+  </circle>
+  <text x="{cx}" y="{cy+12}" text-anchor="middle" font-family="{FONT}" font-size="34" font-weight="800" fill="#E6EDF3">{cur[0]}</text>
+  {lab(cx, 134, "Current Streak", "#F78166", 13)}
+  {lab(cx, 154, fmt(cur[1], cur[2]), "#6E7681", 11)}
+
+  {num(733, best[0])}
+  {lab(733, 116, "Longest Streak", "#C9D1D9", 13)}
+  {lab(733, 138, fmt(best[1], best[2]), "#6E7681", 11)}
 </svg>
 """
 
@@ -459,6 +662,9 @@ def update_readme(projects, login):
 def main():
     login = os.environ.get("USERNAME", "Arshad00006")
     demo = "--demo" in sys.argv
+    global DEMO, LOGIN
+    DEMO = demo
+    LOGIN = login
     if demo:
         data = demo_data()
     else:
@@ -467,9 +673,16 @@ def main():
             sys.exit("Set GH_TOKEN (or GITHUB_TOKEN) or pass --demo")
         data = fetch(login, token)
 
+    if not demo:
+        print("fetched ->", {k: data[k] for k in ("stars", "commits", "followers", "prs", "issues", "reviews", "repos", "years")},
+              "| contributions (365d):", sum(v for _, v in data["days"]),
+              "| projects:", [p["name"] for p in data["projects"]])
     write(os.path.join(OUT_DIR, "trophies.svg"), build_trophies(data))
     write(os.path.join(OUT_DIR, "activity-graph.svg"), build_activity(data))
     write(os.path.join(OUT_DIR, "badges.svg"), build_badges(data))
+    write(os.path.join(OUT_DIR, "stats.svg"), build_stats(data))
+    write(os.path.join(OUT_DIR, "languages.svg"), build_languages(data))
+    write(os.path.join(OUT_DIR, "streak.svg"), build_streak(data))
 
     pdir = os.path.join(OUT_DIR, "projects")
     keep = set()
