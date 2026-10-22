@@ -13,7 +13,7 @@
 
 <div align="center">
 
-<img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=21&pause=1000&color=58A6FF&center=true&vCenter=true&width=540&lines=B.Tech+CSE+%E2%80%94+AI+%26+Data+Science;C+%7C+C%2B%2B+%7C+Python+%7C+JavaScript;Building+projects+%26+grinding+DSA;Open+to+internships+%26+collaboration" alt="Typing SVG" />
+<img width="100%" src="./assets/typing.svg" alt="B.Tech CSE — AI and Data Science | Building projects | Open to internships"/>
 
 <br><br>
 
@@ -22,7 +22,7 @@
 
 </div>
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 👋 About Me
 
@@ -60,7 +60,7 @@ reach_me:    "[ your.email@gmail.com ]"
 
 </details>
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 🛠️ Tech Stack
 
@@ -90,24 +90,20 @@ reach_me:    "[ your.email@gmail.com ]"
 
 </details>
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 📊 GitHub Statistics
 
-<!--
-  If any card below renders blank, the shared public server is rate-limited.
-  Deploy your own instance (5 min, free) and replace the domain.
-  Full instructions: SETUP.md → "Fixing broken cards"
--->
+<!-- All cards below are generated inside this repo by .github/workflows/activity-radar.yml (every 15 min). -->
 
 <div align="center">
 
-<img height="170em" src="https://github-readme-stats.vercel.app/api?username=Arshad00006&show_icons=true&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&icon_color=58A6FF&text_color=C9D1D9&count_private=true&include_all_commits=true&cache_seconds=21600" alt="GitHub stats"/>
-<img height="170em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=Arshad00006&layout=compact&theme=tokyonight&hide_border=true&bg_color=0D1117&title_color=58A6FF&text_color=C9D1D9&langs_count=8&cache_seconds=21600" alt="Top languages"/>
+<img width="49%" src="./assets/stats.svg" alt="GitHub stats"/>
+<img width="49%" src="./assets/languages.svg" alt="Top languages"/>
 
 <br><br>
 
-<img src="https://streak-stats.demolab.com?user=Arshad00006&theme=tokyonight&hide_border=true&background=0D1117&border=30363D&ring=58A6FF&fire=BC8CFF&currStreakLabel=58A6FF&sideNums=C9D1D9&sideLabels=8B949E&dates=8B949E" alt="Contribution streak"/>
+<img width="100%" src="./assets/streak.svg" alt="Contribution streak"/>
 
 </div>
 
@@ -137,26 +133,8 @@ reach_me:    "[ your.email@gmail.com ]"
 
 </div>
 
-<details>
-<summary><b>📇 Detailed breakdown</b></summary>
 
-<br>
-
-<div align="center">
-
-<img src="https://github-profile-summary-cards.vercel.app/api/cards/profile-details?username=Arshad00006&theme=github_dark" alt="Profile details"/>
-
-<img height="150em" src="https://github-profile-summary-cards.vercel.app/api/cards/repos-per-language?username=Arshad00006&theme=github_dark"/>
-<img height="150em" src="https://github-profile-summary-cards.vercel.app/api/cards/most-commit-language?username=Arshad00006&theme=github_dark"/>
-
-<img height="150em" src="https://github-profile-summary-cards.vercel.app/api/cards/stats?username=Arshad00006&theme=github_dark"/>
-<img height="150em" src="https://github-profile-summary-cards.vercel.app/api/cards/productive-time?username=Arshad00006&theme=github_dark&utcOffset=5.5"/>
-
-</div>
-
-</details>
-
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 🐍 Contribution Snake
 
@@ -170,7 +148,7 @@ reach_me:    "[ your.email@gmail.com ]"
 
 </div>
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 🚀 Featured Projects
 
@@ -191,7 +169,7 @@ reach_me:    "[ your.email@gmail.com ]"
 | **[ Project Name ]** | The actual problem it solves, in one line | `HTML` `CSS` `JS` | [Code](#) · [Live](#) |
 | **[ Project Name ]** | The actual problem it solves, in one line | `Python` `scikit-learn` | [Code](#) |
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 💻 Competitive Programming
 
@@ -208,7 +186,7 @@ reach_me:    "[ your.email@gmail.com ]"
 
 </div>
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 🗺️ My Roadmap
 
@@ -233,7 +211,7 @@ graph LR
     style L fill:#1F2937,stroke:#3FB950,color:#3FB950
 ```
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 🎓 Education & Certifications
 
@@ -255,17 +233,7 @@ graph LR
   </tr>
 </table>
 
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
-
-## 💡 Quote of the Day
-
-<div align="center">
-
-<img src="https://quotes-github-readme.vercel.app/api?type=horizontal&theme=tokyonight" alt="Random dev quote"/>
-
-</div>
-
-<img src="https://raw.githubusercontent.com/Trilokia/Trilokia/379277808c61ef204768a61bbc5d25bc7798ccf1/bottom_header.svg" width="100%"/>
+<img src="./assets/divider.svg" width="100%"/>
 
 ## 🤝 Let's Connect
 
@@ -286,5 +254,5 @@ graph LR
 </div>
 
 <p align="center">
-  <img width="100%" src="https://capsule-render.vercel.app/api?type=waving&height=110&section=footer&color=gradient&customColorList=0,2,2,5,30"/>
+  <img width="100%" src="./assets/footer.svg" alt=""/>
 </p>
