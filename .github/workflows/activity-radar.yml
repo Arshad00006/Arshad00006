@@ -2,13 +2,18 @@ name: Update Profile Cards
 
 on:
   schedule:
-    - cron: "0 */12 * * *"   # every 12 hours
+    - cron: "*/15 * * * *"   # every 15 min (GitHub may delay scheduled runs a few minutes)
   workflow_dispatch:          # manual run from the Actions tab
   push:
     branches:
       - main
     paths:
       - "scripts/**"
+      - ".github/workflows/activity-radar.yml"   # first upload triggers a run
+
+concurrency:
+  group: profile-cards
+  cancel-in-progress: false
 
 jobs:
   update:
@@ -27,17 +32,21 @@ jobs:
           USERNAME: ${{ github.repository_owner }}
         run: python3 scripts/generate_radar.py
 
-      - name: Generate trophies, activity graph and project cards
+      - name: Generate stats, languages, streak, trophies, graph, badges and project cards
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
         run: python3 scripts/generate_cards.py
+
+      - name: Generate typing banner
+        run: python3 scripts/make_typing.py
 
       - name: Commit if changed
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A assets README.md
-          git commit -m "chore: refresh profile cards" || exit 0
+          git diff --cached --stat
+          git commit -m "chore: refresh profile cards" || { echo "No changes to commit"; exit 0; }
           git pull --rebase
           git push
