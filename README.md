@@ -13,7 +13,7 @@
 
 <div align="center">
 
-<img width="100%" src="./assets/typing.svg" alt="B.Tech CSE student, AI and Data Science. Building projects. Open to internships."/>
+<img width="100%" src="./assets/typing.svg" alt="B.Tech CSE student, AI and Data Science."/>
 
 <br><br>
 
@@ -31,7 +31,7 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 <!-- Edit the text and colors in scripts/make_typing.py (ABOUT, THEME, CUSTOM_COLORS). -->
 <div align="center">
 
-<img src="./assets/about.svg" alt="About Md Arshad Raza: B.Tech CSE student focused on DSA in C++, React and Python for machine learning"/>
+<img src="./assets/about.svg" alt="About Md ARSHAD RAZA: B.Tech CSE student focused on DSA in C++, Python for machine learning"/>
 
 </div>
 
@@ -42,10 +42,10 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 | | |
 |:--|:--|
-| 🎯 **2026 goal** | 300+ DSA problems · 3 shipped projects · 1 internship |
-| 📚 **Learning from** | [ course / book you're on ] |
+| 🎯 **2026 goal** | 100+ DSA problems · 3 shipped projects · 1 internship |
+| 📚 **Learning from** | GeeksforGeeks · W3Schools|
 | 🧠 **Curious about** | Machine Learning · Computer Vision · System Design |
-| 🎮 **Off-screen** | [ hobby ] · [ hobby ] |
+| 🎮 **Off-screen** | Watching Movies and Series · Listening Music |
 | 💬 **Believe in** | Consistency over intensity. Every single time. |
 
 </details>
@@ -69,8 +69,8 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 | Area | Stack | Confidence |
 |:---|:---|:---|
-| **Core Programming** | C · C++ · Python | `██████████░░` Intermediate |
-| **Web Basics** | HTML · CSS · JavaScript | `████████░░░░` Comfortable |
+| **Core Programming** | C · C++ · Python | `███░░░░░░░░░` Starting |
+| **Web Basics** | HTML · CSS · JavaScript | `███░░░░░░░░░` Starting |
 | **DSA** | Arrays · Strings · Recursion · Sorting | `██████░░░░░░` In progress |
 | **Database** | MySQL | `██████░░░░░░` Fundamentals |
 | **Version Control** | Git · GitHub | `████████░░░░` Daily use |
@@ -169,14 +169,12 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 <div align="center">
 
-<a href="https://leetcode.com/u/[ LEETCODE_USERNAME ]/"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black"/></a>
-<a href="https://www.geeksforgeeks.org/user/[ GFG_USERNAME ]/"><img src="https://img.shields.io/badge/GeeksForGeeks-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white"/></a>
-<a href="https://www.hackerrank.com/profile/[ HACKERRANK_USERNAME ]"><img src="https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/></a>
-<a href="https://www.codechef.com/users/[ CODECHEF_USERNAME ]"><img src="https://img.shields.io/badge/CodeChef-B92B27?style=for-the-badge&logo=codechef&logoColor=white"/></a>
-
+<a href="https://leetcode.com/u/ARSHAD0//"><img src="https://img.shields.io/badge/LeetCode-FFA116?style=for-the-badge&logo=leetcode&logoColor=black"/></a>
+<a href="https://www.geeksforgeeks.org/profile/zahidh3ka9/"><img src="https://img.shields.io/badge/GeeksForGeeks-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white"/></a>
+<a href="https://www.hackerrank.com/profile/zahidhse71"><img src="https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/></a>
 <br><br>
 
-<img src="https://leetcard.jacoblin.cool/[ LEETCODE_USERNAME ]?theme=dark&font=Fira%20Code&ext=heatmap&border=0&radius=16" alt="LeetCode stats"/>
+<img src="https://leetcard.jacoblin.cool/ARSHAD0?theme=dark&font=Fira%20Code&ext=heatmap&border=0&radius=16" alt="LeetCode stats"/>
 
 </div>
 
@@ -207,23 +205,18 @@ graph LR
 
 <img src="./assets/divider.svg" width="100%"/>
 
-## 🎓 Education & Certifications
+## 🎓 Education
 
 <table>
   <tr>
     <td width="60" align="center">🎓</td>
     <td><b>B.Tech in Computer Science (AI & Data Science)</b><br/>
-    <sub>[ YOUR UNIVERSITY NAME ] · [ 20XX ] to [ 20XX ] · CGPA: [ X.XX ]</sub></td>
+    <sub>SISTec Gandhi Nagar · 2025 to 2026 </sub></td>
   </tr>
   <tr>
     <td align="center">🏫</td>
     <td><b>Higher Secondary, Science (PCM)</b><br/>
-    <sub>[ YOUR SCHOOL NAME ] · [ 20XX ]</sub></td>
-  </tr>
-  <tr>
-    <td align="center">📜</td>
-    <td><b>[ Certification Name ]</b><br/>
-    <sub>[ Issuer ] · [ Month 20XX ] · <a href="#">Credential</a></sub></td>
+    <sub>DAV Public School Koyla Nagar · 2024</sub></td>
   </tr>
 </table>
 
@@ -233,11 +226,8 @@ graph LR
 
 <div align="center">
 
-<a href="https://linkedin.com/in/[ YOUR_LINKEDIN ]"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
-<a href="mailto:[ your.email@gmail.com ]"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/></a>
-<a href="https://x.com/[ YOUR_X_HANDLE ]"><img src="https://img.shields.io/badge/X-000000?style=for-the-badge&logo=x&logoColor=white"/></a>
-<a href="https://instagram.com/[ YOUR_INSTAGRAM ]"><img src="https://img.shields.io/badge/Instagram-E4405F?style=for-the-badge&logo=instagram&logoColor=white"/></a>
-<a href="[ LINK_TO_YOUR_RESUME_PDF ]"><img src="https://img.shields.io/badge/Résumé-58A6FF?style=for-the-badge&logo=readdotcv&logoColor=white"/></a>
+<a href="https://www.linkedin.com/in/mdarshadraza2026/"><img src="https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white"/></a>
+<a href="mailto: arshadraza.work@gmail.com"><img src="https://img.shields.io/badge/Email-EA4335?style=for-the-badge&logo=gmail&logoColor=white"/></a>
 
 <br><br>
 
