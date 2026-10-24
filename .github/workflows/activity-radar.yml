@@ -2,14 +2,14 @@ name: Update Profile Cards
 
 on:
   schedule:
-    - cron: "*/15 * * * *"
-  workflow_dispatch:
+    - cron: "*/15 * * * *"   # every 15 min (GitHub may delay scheduled runs a few minutes)
+  workflow_dispatch:          # manual run from the Actions tab
   push:
     branches:
       - main
     paths:
       - "scripts/**"
-      - ".github/workflows/activity-radar.yml"
+      - ".github/workflows/activity-radar.yml"   # first upload triggers a run
 
 concurrency:
   group: profile-cards
@@ -26,6 +26,8 @@ jobs:
 
       - name: Generate activity radar
         env:
+          # Uses your personal token if you add one (counts private contributions),
+          # otherwise falls back to the built-in token (public contributions only).
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
         run: python3 scripts/generate_radar.py
