@@ -1,8 +1,8 @@
 <!--
 ═══════════════════════════════════════════════════════════════════════
-  MD ARSHAD RAZA — GitHub Profile README
+  MD ARSHAD RAZA | GitHub Profile README
   • Replace every [ BRACKETED ] placeholder before publishing.
-  • Every image in ./assets is generated in this repo — nothing external to break.
+  • Every image in ./assets is generated in this repo, so nothing external can break.
   • If a stats card goes blank, see SETUP.md → "Fixing broken cards".
 ═══════════════════════════════════════════════════════════════════════
 -->
@@ -13,7 +13,7 @@
 
 <div align="center">
 
-<img width="100%" src="./assets/typing.svg" alt="B.Tech CSE — AI and Data Science | Building projects | Open to internships"/>
+<img width="100%" src="./assets/typing.svg" alt="B.Tech CSE student, AI and Data Science. Building projects. Open to internships."/>
 
 <br><br>
 
@@ -26,24 +26,14 @@
 
 ## 👋 About Me
 
-I'm a Computer Science undergrad specialising in **AI & Data Science**, currently focused on getting genuinely good at fundamentals — data structures, clean code, and shipping things that actually work rather than collecting tutorials.
+I'm a Computer Science student specialising in **AI and Data Science**. Right now I'm focused on getting the fundamentals solid: data structures, clean code, and building things that actually work instead of just collecting tutorials.
 
-```yaml
-name:        MD Arshad Raza
-role:        B.Tech CSE — AI & Data Science
-university:  "[ YOUR UNIVERSITY NAME ]"
-graduating:  "[ 20XX ]"
-location:    India 🇮🇳
+<!-- Edit the text and colors in scripts/make_typing.py (ABOUT, THEME, CUSTOM_COLORS). -->
+<div align="center">
 
-focused_on:
-  - Data Structures & Algorithms in C++
-  - Frontend fundamentals → React
-  - Python for Machine Learning
+<img src="./assets/about.svg" alt="About Md Arshad Raza: B.Tech CSE student focused on DSA in C++, React and Python for machine learning"/>
 
-building:    "[ YOUR CURRENT PROJECT ]"
-open_to:     [internships, open source, team projects]
-reach_me:    "[ your.email@gmail.com ]"
-```
+</div>
 
 <details>
 <summary><b>📌 Beyond the code</b></summary>
@@ -156,11 +146,7 @@ reach_me:    "[ your.email@gmail.com ]"
 
 <!-- Auto-generated from your pinned repos by scripts/generate_cards.py. Do not edit between the markers. -->
 <!-- PROJECTS:START -->
-<div align="center">
-
-<a href="https://github.com/Arshad00006/Arshad00006"><img width="49%" src="./assets/projects/Arshad00006.svg" alt="Arshad00006"/></a>
-
-</div>
+<sub>📌 Run the <b>Update Profile Cards</b> workflow once and your pinned repositories appear here automatically.</sub>
 <!-- PROJECTS:END -->
 
 </div>
@@ -222,12 +208,12 @@ graph LR
 <table>
   <tr>
     <td width="60" align="center">🎓</td>
-    <td><b>B.Tech — Computer Science (AI & Data Science)</b><br/>
-    <sub>[ YOUR UNIVERSITY NAME ] · [ 20XX ] – [ 20XX ] · CGPA: [ X.XX ]</sub></td>
+    <td><b>B.Tech in Computer Science (AI & Data Science)</b><br/>
+    <sub>[ YOUR UNIVERSITY NAME ] · [ 20XX ] to [ 20XX ] · CGPA: [ X.XX ]</sub></td>
   </tr>
   <tr>
     <td align="center">🏫</td>
-    <td><b>Higher Secondary — Science (PCM)</b><br/>
+    <td><b>Higher Secondary, Science (PCM)</b><br/>
     <sub>[ YOUR SCHOOL NAME ] · [ 20XX ]</sub></td>
   </tr>
   <tr>
