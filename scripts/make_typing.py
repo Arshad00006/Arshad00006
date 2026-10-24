@@ -17,18 +17,12 @@ from html import escape
 
 # ───────────────────────── 1. HEADER BANNER ─────────────────────────
 GREETING = "Hi there, I'm"
-NAME = "Md Arshad Raza"
-TAGLINE = "A CS student exploring AI and data science"
-CHIPS = [                       # (text, style)  style: "info" or "status"
-    ("India", "info"),
-    ("B.Tech CSE · AI & Data Science", "info"),
-    ("Open to internships", "status"),
-]
-
+NAME = "MD ARSHAD RAZA"
+TAGLINE = "A CS Student exploring AI and Data Science"
 # ───────────────────────── 2. TYPING LINES ─────────────────────────
 LINES = [
     "B.Tech CSE student, AI and Data Science",
-    "C, C++, Python and JavaScript",
+    "C, C++, Python and MySQL",
     "Building projects and solving DSA problems",
     "Open to internships and collaboration",
 ]
@@ -42,10 +36,10 @@ CUSTOM_COLORS = {}
 
 WINDOW_TITLE = "about.yml"
 ABOUT = [                       # (key, value)   value can be text, a list, or ("inline", [..])
-    ("name", "MD Arshad Raza"),
+    ("name", "MD ARSHAD RAZA"),
     ("role", "B.Tech CSE (AI & Data Science)"),
-    ("university", "[ YOUR UNIVERSITY NAME ]"),
-    ("graduating", "[ 20XX ]"),
+    ("college", "SISTec Gandhi Nagar"),
+    ("graduating", "2029"),
     ("location", "India"),
     ("", None),                 # blank line
     ("focused_on", [
@@ -54,9 +48,9 @@ ABOUT = [                       # (key, value)   value can be text, a list, or (
         "Python for Machine Learning",
     ]),
     ("", None),
-    ("building", "[ YOUR CURRENT PROJECT ]"),
+    ("building", "Sustainable Plot Planner"),
     ("open_to", ("inline", ["internships", "open source", "team projects"])),
-    ("reach_me", "[ your.email@gmail.com ]"),
+    ("reach_me", "arshadraza.work@gmail@gmail.com"),
 ]
 
 # ───────────────────────── 4. TECH STACK (scrolling logos) ─────────────────────────
