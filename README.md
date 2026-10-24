@@ -146,7 +146,11 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 <!-- Auto-generated from your pinned repos by scripts/generate_cards.py. Do not edit between the markers. -->
 <!-- PROJECTS:START -->
-<sub>📌 Run the <b>Update Profile Cards</b> workflow once and your pinned repositories appear here automatically.</sub>
+<div align="center">
+
+<a href="https://github.com/Arshad00006/Arshad00006"><img width="49%" src="./assets/projects/Arshad00006.svg" alt="Arshad00006"/></a>
+
+</div>
 <!-- PROJECTS:END -->
 
 </div>
