@@ -31,7 +31,7 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 <!-- Edit the text and colors in scripts/make_typing.py (ABOUT, THEME, CUSTOM_COLORS). -->
 <div align="center">
 
-<img src="./assets/about.svg" alt="About Md ARSHAD RAZA: B.Tech CSE student focused on DSA in C++, Python for machine learning"/>
+<img src="./assets/about.svg" alt="About MD ARSHAD RAZA: B.Tech CSE student focused on DSA in C++, Python for machine learning"/>
 
 </div>
 
