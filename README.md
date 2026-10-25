@@ -1,12 +1,3 @@
-<!--
-═══════════════════════════════════════════════════════════════════════
-  MD ARSHAD RAZA | GitHub Profile README
-  • Replace every [ BRACKETED ] placeholder before publishing.
-  • Every image in ./assets is generated in this repo, so nothing external can break.
-  • If a stats card goes blank, see SETUP.md → "Fixing broken cards".
-═══════════════════════════════════════════════════════════════════════
--->
-
 <p align="center">
   <img width="100%" src="./assets/header.svg" alt="MD Arshad Raza"/>
 </p>
@@ -17,7 +8,6 @@
 
 <br><br>
 
-<!-- Self-hosted: refreshed every 12h by scripts/generate_cards.py -->
 <img width="100%" src="./assets/badges.svg" alt="Followers, repositories, stars and contributions"/>
 
 </div>
@@ -28,7 +18,6 @@
 
 I'm a Computer Science student specialising in **AI and Data Science**. Right now I'm focused on getting the fundamentals solid: data structures, clean code, and building things that actually work instead of just collecting tutorials.
 
-<!-- Edit the text and colors in scripts/make_typing.py (ABOUT, THEME, CUSTOM_COLORS). -->
 <div align="center">
 
 <img src="./assets/about.svg" alt="About MD ARSHAD RAZA: B.Tech CSE student focused on DSA in C++, Python for machine learning"/>
@@ -84,7 +73,6 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 ## 📊 GitHub Statistics
 
-<!-- All cards below are generated inside this repo by .github/workflows/activity-radar.yml (every 15 min). -->
 
 <div align="center">
 
@@ -101,14 +89,12 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 <div align="center">
 
-<!-- Self-hosted: refreshed every 12h by .github/workflows/activity-radar.yml -->
 <img width="100%" src="./assets/activity-graph.svg" alt="Contribution activity over the last 31 days"/>
 
 </div>
 
 ### 🧭 Activity Overview
 
-<!-- Self-hosted: refreshed every 12h by .github/workflows/activity-radar.yml -->
 <div align="center">
 
 <img width="100%" src="./assets/activity-radar.svg" alt="Activity overview: commits, pull requests, issues and code reviews"/>
@@ -144,14 +130,11 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 <div align="center">
 
-<!-- Auto-generated from your pinned repos by scripts/generate_cards.py. Do not edit between the markers. -->
-<!-- PROJECTS:START -->
 <div align="center">
 
 <a href="https://github.com/Arshad00006/Arshad00006"><img width="49%" src="./assets/projects/Arshad00006.svg" alt="Arshad00006"/></a>
 
 </div>
-<!-- PROJECTS:END -->
 
 </div>
 
