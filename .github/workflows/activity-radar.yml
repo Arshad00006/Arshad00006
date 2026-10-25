@@ -2,17 +2,14 @@ name: Update Profile Cards
 
 on:
   schedule:
-    - cron: "*/15 * * * *"   # every 15 min (GitHub may delay scheduled runs a few minutes)
+    - cron: "*/5 * * * *"    # every 5 min, the fastest GitHub allows (it may delay runs a few minutes)
   workflow_dispatch:          # manual run from the Actions tab
   push:
     branches:
       - main
-    paths:
-      - "scripts/**"
-      - ".github/workflows/activity-radar.yml"   # first upload triggers a run
 
 concurrency:
-  group: profile-cards
+  group: profile-repo-writes   # shared with the 3D workflow so they never push at the same time
   cancel-in-progress: false
 
 jobs:
@@ -33,20 +30,31 @@ jobs:
         run: python3 scripts/generate_radar.py
 
       - name: Generate stats, languages, streak, trophies, graph, badges and project cards
+        if: ${{ !cancelled() }}   # still runs if an earlier step failed, so good data is never lost
         env:
           GH_TOKEN: ${{ secrets.GH_PAT || secrets.GITHUB_TOKEN }}
           USERNAME: ${{ github.repository_owner }}
         run: python3 scripts/generate_cards.py
 
       - name: Generate typing banner
+        if: ${{ !cancelled() }}   # still runs if an earlier step failed, so good data is never lost
         run: python3 scripts/make_typing.py
 
       - name: Commit if changed
+        if: ${{ !cancelled() }}   # still runs if an earlier step failed, so good data is never lost
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add -A assets README.md
           git diff --cached --stat
           git commit -m "chore: refresh profile cards" || { echo "No changes to commit"; exit 0; }
-          git pull --rebase
-          git push
+          for attempt in 1 2 3 4 5; do
+            if git pull --rebase -X theirs && git push; then
+              exit 0
+            fi
+            echo "Push attempt $attempt failed, retrying..."
+            git rebase --abort 2>/dev/null || true
+            sleep $((attempt * 5))
+          done
+          echo "Could not push after 5 attempts"
+          exit 1
