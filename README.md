@@ -1,10 +1,10 @@
 <p align="center">
-  <img width="100%" src="./assets/header.svg" alt="MD Arshad Raza"/>
+  <img width="100%" src="./assets/header.svg" alt="MD ARSHAD RAZA"/>
 </p>
 
 <div align="center">
 
-<img width="100%" src="./assets/typing.svg" alt="B.Tech CSE student, AI and Data Science."/>
+<img width="100%" src="./assets/typing.svg" alt="B.Tech AI and Data Science Student."/>
 
 <br><br>
 
