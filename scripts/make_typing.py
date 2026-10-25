@@ -17,9 +17,9 @@ import random
 from html import escape
 
 # ───────────────────────── 1. HEADER BANNER ─────────────────────────
-GREETING = "Hi there, I'm"
-NAME = "Md Arshad Raza"
-TAGLINE = "A CS student exploring AI and data science"
+GREETING = "I'm"
+NAME = "MD ARSHAD RAZA"
+TAGLINE = "AI and Data Science Student"
 CHIPS = [                       # (text, style)  style: "info" or "status"
     ("India", "info"),
     ("B.Tech CSE · AI & Data Science", "info"),
@@ -29,7 +29,7 @@ CHIPS = [                       # (text, style)  style: "info" or "status"
 # ───────────────────────── 2. TYPING LINES ─────────────────────────
 LINES = [
     "B.Tech CSE student, AI and Data Science",
-    "C, C++, Python and JavaScript",
+    "C, C++, Python and MySQL",
     "Building projects and solving DSA problems",
     "Open to internships and collaboration",
 ]
@@ -43,10 +43,10 @@ CUSTOM_COLORS = {}
 
 WINDOW_TITLE = "about.yml"
 ABOUT = [                       # (key, value)   value can be text, a list, or ("inline", [..])
-    ("name", "MD Arshad Raza"),
+    ("name", "MD ARSHAD RAZA"),
     ("role", "B.Tech CSE (AI & Data Science)"),
-    ("university", "[ YOUR UNIVERSITY NAME ]"),
-    ("graduating", "[ 20XX ]"),
+    ("university", "SISTec Gandhi Nagar"),
+    ("graduating", "2029"),
     ("location", "India"),
     ("", None),                 # blank line
     ("focused_on", [
@@ -55,9 +55,9 @@ ABOUT = [                       # (key, value)   value can be text, a list, or (
         "Python for Machine Learning",
     ]),
     ("", None),
-    ("building", "[ YOUR CURRENT PROJECT ]"),
+    ("building", "TIMMY"),
     ("open_to", ("inline", ["internships", "open source", "team projects"])),
-    ("reach_me", "[ your.email@gmail.com ]"),
+    ("reach_me", "arshadraza.work@gmail.com"),
 ]
 
 # ───────────────────────── 4. TECH STACK (scrolling logos) ─────────────────────────
@@ -76,23 +76,23 @@ TECH_LABELS = {                           # optional nicer display names (defaul
 # If a setting above is accidentally deleted or has the wrong type while editing,
 # the script prints a warning and uses these defaults, so one bad edit never breaks your profile.
 _DEFAULTS = {
-    "GREETING": "Hi there, I'm",
-    "NAME": "Md Arshad Raza",
-    "TAGLINE": "A CS student exploring AI and data science",
+    "GREETING": "I'm",
+    "NAME": "MD ARSHAD RAZA",
+    "TAGLINE": "AI and Data Science Student",
     "CHIPS": [("India", "info"), ("B.Tech CSE · AI & Data Science", "info"), ("Open to internships", "status")],
     "LINES": ["B.Tech CSE student, AI and Data Science", "C, C++, Python and JavaScript",
               "Building projects and solving DSA problems", "Open to internships and collaboration"],
     "THEME": "tokyo-night",
     "CUSTOM_COLORS": {},
     "WINDOW_TITLE": "about.yml",
-    "ABOUT": [("name", "MD Arshad Raza"), ("role", "B.Tech CSE (AI & Data Science)"),
-              ("university", "[ YOUR UNIVERSITY NAME ]"), ("graduating", "[ 20XX ]"), ("location", "India"),
+    "ABOUT": [("name", "MD ARSHAD RAZA"), ("role", "B.Tech CSE (AI & Data Science)"),
+              ("university", "SISTec Gandhi Nagar"), ("graduating", "2029"), ("location", "India"),
               ("", None),
               ("focused_on", ["Data Structures & Algorithms in C++", "Frontend fundamentals, then React", "Python for Machine Learning"]),
               ("", None),
-              ("building", "[ YOUR CURRENT PROJECT ]"),
+              ("building", "TIMMY"),
               ("open_to", ("inline", ["internships", "open source", "team projects"])),
-              ("reach_me", "[ your.email@gmail.com ]")],
+              ("reach_me", "arshadraza.work@gmail.com ]")],
     "TECH_TITLE": "Tech Stack",
     "TECH_STATUS": "actively learning",
     "TECH_ROW1": ["c", "cplusplus", "python", "javascript", "html5", "css3", "mysql"],
