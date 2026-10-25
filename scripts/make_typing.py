@@ -20,6 +20,11 @@ from html import escape
 GREETING = "I'm"
 NAME = "MD ARSHAD RAZA"
 TAGLINE = "AI and Data Science Student"
+CHIPS = [                       # (text, style)  style: "info" or "status"
+    ("India", "info"),
+    ("B.Tech CSE · AI & Data Science", "info"),
+    ("Open to internships", "status"),
+]
 
 # ───────────────────────── 2. TYPING LINES ─────────────────────────
 LINES = [
