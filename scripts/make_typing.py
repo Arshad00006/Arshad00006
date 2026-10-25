@@ -10,6 +10,7 @@ import json
 import math
 import os
 import re
+import sys
 import urllib.error
 import urllib.request
 import random
@@ -17,12 +18,18 @@ from html import escape
 
 # ───────────────────────── 1. HEADER BANNER ─────────────────────────
 GREETING = "Hi there, I'm"
-NAME = "MD ARSHAD RAZA"
-TAGLINE = "A CS Student exploring AI and Data Science"
+NAME = "Md Arshad Raza"
+TAGLINE = "A CS student exploring AI and data science"
+CHIPS = [                       # (text, style)  style: "info" or "status"
+    ("India", "info"),
+    ("B.Tech CSE · AI & Data Science", "info"),
+    ("Open to internships", "status"),
+]
+
 # ───────────────────────── 2. TYPING LINES ─────────────────────────
 LINES = [
     "B.Tech CSE student, AI and Data Science",
-    "C, C++, Python and MySQL",
+    "C, C++, Python and JavaScript",
     "Building projects and solving DSA problems",
     "Open to internships and collaboration",
 ]
@@ -36,10 +43,10 @@ CUSTOM_COLORS = {}
 
 WINDOW_TITLE = "about.yml"
 ABOUT = [                       # (key, value)   value can be text, a list, or ("inline", [..])
-    ("name", "MD ARSHAD RAZA"),
+    ("name", "MD Arshad Raza"),
     ("role", "B.Tech CSE (AI & Data Science)"),
-    ("college", "SISTec Gandhi Nagar"),
-    ("graduating", "2029"),
+    ("university", "[ YOUR UNIVERSITY NAME ]"),
+    ("graduating", "[ 20XX ]"),
     ("location", "India"),
     ("", None),                 # blank line
     ("focused_on", [
@@ -48,9 +55,9 @@ ABOUT = [                       # (key, value)   value can be text, a list, or (
         "Python for Machine Learning",
     ]),
     ("", None),
-    ("building", "Sustainable Plot Planner"),
+    ("building", "[ YOUR CURRENT PROJECT ]"),
     ("open_to", ("inline", ["internships", "open source", "team projects"])),
-    ("reach_me", "arshadraza.work@gmail@gmail.com"),
+    ("reach_me", "[ your.email@gmail.com ]"),
 ]
 
 # ───────────────────────── 4. TECH STACK (scrolling logos) ─────────────────────────
@@ -64,6 +71,42 @@ TECH_LABELS = {                           # optional nicer display names (defaul
     "mysql": "MySQL", "github": "GitHub", "vscode": "VS Code", "nodejs": "Node.js",
     "tailwindcss": "Tailwind", "mongodb": "MongoDB", "postgresql": "PostgreSQL", "typescript": "TypeScript",
 }
+
+# ───────────────────────── safety net ─────────────────────────
+# If a setting above is accidentally deleted or has the wrong type while editing,
+# the script prints a warning and uses these defaults, so one bad edit never breaks your profile.
+_DEFAULTS = {
+    "GREETING": "Hi there, I'm",
+    "NAME": "Md Arshad Raza",
+    "TAGLINE": "A CS student exploring AI and data science",
+    "CHIPS": [("India", "info"), ("B.Tech CSE · AI & Data Science", "info"), ("Open to internships", "status")],
+    "LINES": ["B.Tech CSE student, AI and Data Science", "C, C++, Python and JavaScript",
+              "Building projects and solving DSA problems", "Open to internships and collaboration"],
+    "THEME": "tokyo-night",
+    "CUSTOM_COLORS": {},
+    "WINDOW_TITLE": "about.yml",
+    "ABOUT": [("name", "MD Arshad Raza"), ("role", "B.Tech CSE (AI & Data Science)"),
+              ("university", "[ YOUR UNIVERSITY NAME ]"), ("graduating", "[ 20XX ]"), ("location", "India"),
+              ("", None),
+              ("focused_on", ["Data Structures & Algorithms in C++", "Frontend fundamentals, then React", "Python for Machine Learning"]),
+              ("", None),
+              ("building", "[ YOUR CURRENT PROJECT ]"),
+              ("open_to", ("inline", ["internships", "open source", "team projects"])),
+              ("reach_me", "[ your.email@gmail.com ]")],
+    "TECH_TITLE": "Tech Stack",
+    "TECH_STATUS": "actively learning",
+    "TECH_ROW1": ["c", "cplusplus", "python", "javascript", "html5", "css3", "mysql"],
+    "TECH_ROW2": ["git", "github", "vscode", "react", "nodejs", "tailwindcss", "mongodb"],
+    "TECH_LABELS": {"c": "C", "cplusplus": "C++", "javascript": "JavaScript", "html5": "HTML5", "css3": "CSS3",
+                    "mysql": "MySQL", "github": "GitHub", "vscode": "VS Code", "nodejs": "Node.js",
+                    "tailwindcss": "Tailwind", "mongodb": "MongoDB"},
+}
+for _name, _default in _DEFAULTS.items():
+    _value = globals().get(_name)
+    if _value is None or not isinstance(_value, type(_default)):
+        print(f"WARNING: setting {_name} is missing or has the wrong type. Using the default. "
+              f"Check the settings at the top of scripts/make_typing.py.")
+        globals()[_name] = _default
 
 HEADER_OUT = os.environ.get("HEADER_OUT", "assets/header.svg")
 TYPING_OUT = os.environ.get("TYPING_OUT", "assets/typing.svg")
@@ -401,9 +444,24 @@ def ensure_techstack():
 
 
 if __name__ == "__main__":
-    for path, svg in ((HEADER_OUT, build_header()), (TYPING_OUT, build_typing()), (ABOUT_OUT, build_about())):
+    failures = 0
+    for label, path, build in (("header", HEADER_OUT, build_header),
+                               ("typing animation", TYPING_OUT, build_typing),
+                               ("about card", ABOUT_OUT, build_about)):
+        try:
+            svg = build()
+        except Exception as e:      # one broken setting must not stop the other images
+            failures += 1
+            print(f"ERROR: could not build the {label}: {e!r}. Keeping the previous image. "
+                  f"Check the settings at the top of scripts/make_typing.py.")
+            continue
         os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
         with open(path, "w", encoding="utf-8") as f:
             f.write(svg)
         print("wrote", path)
-    ensure_techstack()
+    try:
+        ensure_techstack()
+    except Exception as e:
+        failures += 1
+        print(f"ERROR: could not build the tech stack: {e!r}. Keeping the previous image.")
+    sys.exit(1 if failures else 0)
