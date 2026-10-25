@@ -19,24 +19,24 @@
     <circle cx="56.0" cy="52" r="31" fill="none" stroke="#CD7F32" stroke-opacity="0.5" stroke-width="1.5"/>
     <g transform="translate(41.6,37.6) scale(1.2)"><line x1="2" y1="12" x2="22" y2="12" stroke="#CD7F32" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="12" r="4.5" fill="#0D1117" stroke="#CD7F32" stroke-width="2"/></g>
     <text x="56.0" y="106" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#8B949E">Commits</text>
-    <text x="56.0" y="128" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="20" font-weight="800" fill="#E6EDF3">23</text>
+    <text x="56.0" y="128" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="20" font-weight="800" fill="#E6EDF3">34</text>
     <rect x="16" y="138" width="80" height="3" rx="1.5" fill="#21262D"/>
-    <rect x="16" y="138" width="11.6" height="3" rx="1.5" fill="#CD7F32"/>
+    <rect x="16" y="138" width="21.3" height="3" rx="1.5" fill="#CD7F32"/>
     <rect x="26.0" y="148" width="60" height="16" rx="8" fill="#CD7F32" fill-opacity="0.15"/>
     <text x="56.0" y="160" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#CD7F32">BRONZE</text>
   </g>
   <g transform="translate(262,4)">
     <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="0.16s" fill="freeze"/>
-    <rect width="112" height="172" rx="14" fill="#161B22" stroke="#484F58" stroke-opacity="0.35"/>
-    <circle cx="56.0" cy="52" r="31" fill="#484F58" fill-opacity="0.06"/>
-    <circle cx="56.0" cy="52" r="31" fill="none" stroke="#484F58" stroke-opacity="0.5" stroke-width="1.5"/>
-    <g transform="translate(41.6,37.6) scale(1.2)"><circle cx="12" cy="8" r="4" fill="none" stroke="#6E7681" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#6E7681" stroke-width="2" stroke-linecap="round"/></g>
+    <rect width="112" height="172" rx="14" fill="#161B22" stroke="#CD7F32" stroke-opacity="0.55"/>
+    <circle cx="56.0" cy="52" r="31" fill="#CD7F32" fill-opacity="0.13"/>
+    <circle cx="56.0" cy="52" r="31" fill="none" stroke="#CD7F32" stroke-opacity="0.5" stroke-width="1.5"/>
+    <g transform="translate(41.6,37.6) scale(1.2)"><circle cx="12" cy="8" r="4" fill="none" stroke="#CD7F32" stroke-width="2"/><path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" fill="none" stroke="#CD7F32" stroke-width="2" stroke-linecap="round"/></g>
     <text x="56.0" y="106" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" font-weight="600" fill="#8B949E">Followers</text>
-    <text x="56.0" y="128" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="20" font-weight="800" fill="#E6EDF3">0</text>
+    <text x="56.0" y="128" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="20" font-weight="800" fill="#E6EDF3">2</text>
     <rect x="16" y="138" width="80" height="3" rx="1.5" fill="#21262D"/>
-    <rect x="16" y="138" width="0.0" height="3" rx="1.5" fill="#484F58"/>
-    <rect x="26.0" y="148" width="60" height="16" rx="8" fill="#484F58" fill-opacity="0.15"/>
-    <text x="56.0" y="160" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#484F58">LOCKED</text>
+    <rect x="16" y="138" width="8.9" height="3" rx="1.5" fill="#CD7F32"/>
+    <rect x="26.0" y="148" width="60" height="16" rx="8" fill="#CD7F32" fill-opacity="0.15"/>
+    <text x="56.0" y="160" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#CD7F32">BRONZE</text>
   </g>
   <g transform="translate(384,4)">
     <animate attributeName="opacity" from="0" to="1" dur="0.6s" begin="0.24s" fill="freeze"/>
@@ -90,5 +90,5 @@
     <rect x="26.0" y="148" width="60" height="16" rx="8" fill="#F2C94C" fill-opacity="0.15"/>
     <text x="56.0" y="160" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="10" font-weight="700" fill="#F2C94C">GOLD</text>
   </g>
-  <text x="862" y="196" text-anchor="end" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" fill="#6E7681">Updated Oct 24, 2026 · auto-refreshes every 15 min</text>
+  <text x="862" y="196" text-anchor="end" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" fill="#6E7681">Updated Oct 25, 2026 · auto-refreshes every 15 min</text>
 </svg>

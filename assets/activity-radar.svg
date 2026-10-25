@@ -14,11 +14,11 @@
 
   <text x="32" y="46" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="18" font-weight="700" fill="#E6EDF3">Activity Overview</text>
   <rect x="32" y="56" width="46" height="3" rx="1.5" fill="url(#accent)"/>
-  <text x="32" y="82" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="12" fill="#8B949E">@Arshad00006 · last 12 months · 1 repositories</text>
+  <text x="32" y="82" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="12" fill="#8B949E">@Arshad00006 · last 12 months · 3 repositories</text>
   
     <circle cx="38" cy="124" r="4" fill="#58A6FF"/>
     <text x="52" y="128" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="13" font-weight="600" fill="#C9D1D9">Commits</text>
-    <text x="362" y="128" text-anchor="end" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="13" fill="#8B949E">23</text>
+    <text x="362" y="128" text-anchor="end" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="13" fill="#8B949E">34</text>
     <rect x="32" y="138" width="330" height="6" rx="3" fill="#161B22"/>
     <rect x="32" y="138" width="330.0" height="6" rx="3" fill="#58A6FF">
       <animate attributeName="width" from="0" to="330.0" dur="1s" begin="0.2s"
@@ -65,5 +65,5 @@
   </g>
 
   <text x="650" y="32" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#E6EDF3">0%</text><text x="650" y="49" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="12" fill="#8B949E">Code review</text><text x="772" y="174" text-anchor="start" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#E6EDF3">0%</text><text x="772" y="191" text-anchor="start" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="12" fill="#8B949E">Issues</text><text x="650" y="310" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#E6EDF3">0%</text><text x="650" y="327" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="12" fill="#8B949E">Pull requests</text><text x="528" y="174" text-anchor="end" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="17" font-weight="700" fill="#E6EDF3">100%</text><text x="528" y="191" text-anchor="end" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="12" fill="#8B949E">Commits</text>
-  <text x="32" y="322" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" fill="#6E7681">Updated Oct 24, 2026 · auto-refreshes every 15 min</text>
+  <text x="32" y="322" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" fill="#6E7681">Updated Oct 25, 2026 · auto-refreshes every 15 min</text>
 </svg>
