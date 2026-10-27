@@ -142,8 +142,8 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 
 | Project | What It Solves | Stack | Links |
 |:---|:---|:---|:---|
-| **INFRAGuard AI** | Predict Infrastructure Project Risks Before They Become Overruns | `Python` `Pandas` `Scikit-learn` `CatBoost` `SHAP` `Streamlit` `Plotly` `CSV / SQLit` | [Live](https://infraguardai-nine.vercel.app/) |
-| **TIMMY** | A plot-first design assistant that turns irregular land into a sustainable building concept: sun, water, soil, materials and cost | `React + Vite frontend` `Python FastAPI + Shapely geometry` `pvlib sun path` `Three.js 3D preview` | [Demo](https://timmy-xi.vercel.app/) |
+| **INFRAGuard AI** | Predict Infrastructure Project Risks Before They Become Overruns | `Python` `Pandas` `Scikit-learn` `CatBoost` `SHAP` `Streamlit` `Plotly` `CSV / SQLit` | [Live](https://infraguard-ai.vercel.app/) |
+| **TIMMY** | A plot-first design assistant that turns irregular land into a sustainable building concept: sun, water, soil, materials and cost | `React + Vite frontend` `Python FastAPI + Shapely geometry` `pvlib sun path` `Three.js 3D preview` | [Demo](https://timmy-three-gilt.vercel.app/) |
 <img src="./assets/divider.svg" width="100%"/>
 
 ## 💻 Competitive Programming
