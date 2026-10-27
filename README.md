@@ -155,8 +155,6 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 <a href="https://www.hackerrank.com/profile/zahidhse71"><img src="https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/></a>
 <br><br>
 
-<img src="https://leetcard.jacoblin.cool/ARSHAD0?theme=dark&font=Fira%20Code&ext=heatmap&border=0&radius=16" alt="LeetCode stats"/>
-
 </div>
 
 <img src="./assets/divider.svg" width="100%"/>
