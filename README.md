@@ -154,9 +154,7 @@ I'm a Computer Science student specialising in **AI and Data Science**. Right no
 <a href="https://www.geeksforgeeks.org/profile/zahidh3ka9/"><img src="https://img.shields.io/badge/GeeksForGeeks-2F8D46?style=for-the-badge&logo=geeksforgeeks&logoColor=white"/></a>
 <a href="https://www.hackerrank.com/profile/zahidhse71"><img src="https://img.shields.io/badge/HackerRank-00EA64?style=for-the-badge&logo=hackerrank&logoColor=black"/></a>
 <br><br>
-
 </div>
-
 <img src="./assets/divider.svg" width="100%"/>
 
 ## 🗺️ My Roadmap
