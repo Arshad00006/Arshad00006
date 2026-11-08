@@ -8,7 +8,7 @@
 
   <text x="147" y="86" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="34" font-weight="800" fill="#E6EDF3">58</text>
   <text x="147" y="116" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="13" fill="#C9D1D9">Total Contributions</text>
-  <text x="147" y="138" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" fill="#6E7681">Nov 2, 2025 to today</text>
+  <text x="147" y="138" text-anchor="middle" font-family="'Segoe UI',Ubuntu,Helvetica,Arial,sans-serif" font-size="11" fill="#6E7681">Nov 9, 2025 to today</text>
 
   <circle cx="440" cy="66" r="42" fill="none" stroke="#21262D" stroke-width="7"/>
   <circle cx="440" cy="66" r="42" fill="none" stroke="url(#g)" stroke-width="7" stroke-linecap="round"
