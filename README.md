@@ -188,7 +188,7 @@ graph LR
   <tr>
     <td width="60" align="center">🎓</td>
     <td><b>B.Tech in Computer Science (AI & Data Science)</b><br/>
-    <sub>SISTec Gandhi Nagar · 2025 to 2026 </sub></td>
+    <sub>SISTec Gandhi Nagar · 2025 to 2029 </sub></td>
   </tr>
   <tr>
     <td align="center">🏫</td>
